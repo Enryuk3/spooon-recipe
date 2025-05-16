@@ -2,7 +2,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-
+  runtimeConfig: {
+    spoonacular: {
+      apiKey: '',
+    },
+  },
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -12,6 +16,16 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       standalone: false,
+    },
+  },
+  $development: {
+    nitro: {
+      storage: {
+        recipes: {
+          driver: 'fs',
+          base: 'recipes',
+        },
+      },
     },
   },
 })
