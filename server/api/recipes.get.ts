@@ -40,6 +40,7 @@ const recipeSchema = z.object({
     originalName: z.string(),
     amount: z.number(),
     unit: z.string(),
+    image: z.nullable(z.string()),
     meta: z.array(z.string()),
     measures: z.object({
       us: z.object({
