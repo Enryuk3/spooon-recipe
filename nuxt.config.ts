@@ -9,6 +9,11 @@ export default defineNuxtConfig({
       apiKey: '',
     },
   },
+  routeRules: {
+    '/**': {
+      isr: 60 * 60 * 24,
+    },
+  },
   css: ['~/assets/css/main.css'],
   vite: {
     plugins: [
