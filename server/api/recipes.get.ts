@@ -61,8 +61,7 @@ const recipeSchema = z.object({
   instructions: z.string(),
 })
 
-export default defineCachedEventHandler(async (event) => {
-  console.log('making fresh recipes request')
+export default defineCachedEventHandler(async () => {
   const { recipes } = await $fetch<{ recipes: unknown }>('https://api.spoonacular.com/recipes/random', {
     query: {
       limitLicense: true,
@@ -75,7 +74,7 @@ export default defineCachedEventHandler(async (event) => {
     return z.parse(z.array(recipeSchema), recipes)
   }
   catch (e) {
-    console.log(e)
+    console.warn(e)
     return []
   }
 }, {
